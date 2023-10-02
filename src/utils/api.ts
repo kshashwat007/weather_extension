@@ -1,7 +1,7 @@
-const OPEN_WEATHER_API_KEY = 'a1f2f5165e0e5447d9f312df5cc5528d'
+const WEATHER_API_KEY = 'a1f2f5165e0e5447d9f312df5cc5528d'
 
 
-export interface OpenWeatherData {
+export interface WeatherData {
   name: string
   main: {
     feels_like: number,
@@ -24,14 +24,14 @@ export interface OpenWeatherData {
   }
 }
 
-export async function fetchOpenWeatherData(city: string): Promise<OpenWeatherData> {
-  const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${OPEN_WEATHER_API_KEY}`)
+export async function fetchWeatherData(city: string): Promise<WeatherData> {
+  const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${WEATHER_API_KEY}`)
 
   if (!res.ok) {
     throw new Error('City not found')
   }
 
-  const data: OpenWeatherData = await res.json()
+  const data: WeatherData = await res.json()
   
   return data
 }

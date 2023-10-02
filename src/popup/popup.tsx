@@ -1,20 +1,14 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import ReactDom from 'react-dom'
 import { createRoot } from 'react-dom/client'
 import './popup.css'
-import {fetchOpenWeatherData} from '../utils/api'
+import WeatherCard from './WeatherCard'
 
 const App: React.FC<{}> = () => {
-
-  useEffect(() => {
-    fetchOpenWeatherData('Dubai')
-      .then((data) => console.log(data))
-      .catch((err) => console.log("Error while fetching data", err))
-  }, [])
   
   return (
     <div>
-      <img src='icon.png'/>
+      <WeatherCard city="Dubai"/>
     </div>
   )
 }
